@@ -29,11 +29,12 @@ describe('app routes', () => {
     expect(res.text).toEqual('<h1> blue </h1>');
   });
 
-  it('response should return ',  async() => {
-    const res = await request(app).post('/echo');
+  it('response should return body and status code',  async() => {
+    const res = await request(app).post('/echo').send('hello');
 
 
-    expect(res.text).toEqual('');
+    expect(res.text).toEqual('hello');
+    expect(res.status).toEqual(200);
   });
 
 });
